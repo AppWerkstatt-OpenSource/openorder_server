@@ -1,0 +1,25 @@
+<div class="listenbereich left">
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let user of users" (click)="showUser($event, user)">
+            {{ user.vorname }} {{user.nachname}}
+            <span *ngIf="user.vorname == null">Neuer Benutzer</span>
+        </li>
+    </ul>
+    <button type="button" (click)="cmdAddUser($event)" class="btn btn-default btn-block">Benutzer hinzufügen</button>
+</div>
+<!-- Ende listenbereich -->
+
+<div class="bearbeiungsbereich" *ngIf="showUserEditor">
+    <h3>Benutzer hinzufügen/bearbeiten </h3>
+    <div class="settings">
+        <input type="text" class="form-control" [(ngModel)]="user.vorname" placeholder="Vorname">
+        <input type="text" class="form-control" [(ngModel)]="user.nachname" placeholder="Nachname">
+        <input type="text" class="form-control" [(ngModel)]="user.adresse" placeholder="Adresse">
+        <input type="text" class="form-control" [(ngModel)]="user.benutzername" placeholder="Benutzername">
+        <input type="text" class="form-control" [(ngModel)]="user.passwort" placeholder="Passwort">
+        <input type="text" class="form-control" [(ngModel)]="user.kommentar" placeholder="Kommentar">
+    </div>
+    <button class="btn btn-default" (click)="cmdFinishUser($event)" type="submit">Fertig</button>
+    <button class="btn btn-default" (click)="cmdDeleteUser($event, user)" type="submit">Benutzer löschen</button>
+</div>
+<!-- Ende bearbeitungsbereich -->

@@ -1,0 +1,45 @@
+<!-- Anfang Kopfbereich -->
+<div class="kopfbereich transparent">
+    <div class="left">
+        <img class="img left" src="assets/WaiterBlack.png">
+        <h1 class="left">OpenOrder</h1>
+    </div>
+    <div class="kopfbereich_rechts">
+        <div class="dropdown right">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      ACCOUNT
+                      <span class="caret"></span>
+                    </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#">Einstellungen</a></li>
+                <li><a href="#">Info</a></li>
+                <li><a href="#">Abmelden</a></li>
+            </ul>
+        </div>
+        <div class="dropdown right">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      HILFE
+                      <span class="caret"></span>
+                    </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#">Get started</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+        </div>
+        <div class="dropdown right">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      EINSTELLUNGEN
+                      <span class="caret"></span>
+                    </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a routerLink="/benutzer" routerLinkActive="active">Benutzer</a></li>
+                <li><a routerLink="/tische" routerLinkActive="active">Tische</a></li>
+                <li><a routerLink="/produkte" routerLinkActive="active">Produkte</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<!-- Ende kopfbereich -->
+
+<router-outlet></router-outlet>

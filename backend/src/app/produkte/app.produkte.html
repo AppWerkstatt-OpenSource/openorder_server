@@ -1,0 +1,47 @@
+<!-- Start listenbereich-->
+<div id="listenbereich" class="panel-group listenbereich left" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default" *ngFor="let productCategory of productCategorys">
+        <div class="panel-heading" role="tab" id="headingOne" (click)="showProductCategory($event, productCategory)">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    {{productCategory.name}}
+                    <span *ngIf="productCategory.name == null">Neue Produktkategorie</span>
+        </a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="list-group list-item-container" *ngFor="let product of productCategory.products" (click)="showProduct($event, productCategory, product)">
+                {{product.name}} <img class="icon" src="assets/pencil_icon.png">
+                <span *ngIf="product.name == null">Neues Produkt</span>
+            </div>
+        </div>
+        <button type="button" (click)="cmdAddProduct($event, productCategory)" class="btn btn-default btn-block"> Produkt hinzufügen</button>
+    </div>
+    <button type="button" (click)="cmdAddProductCategory($event)" class="btn btn-default btn-block">Produktgruppe hinzufügen</button>
+</div>
+<!-- Ende listenbereich -->
+
+<!-- Start ProductCategory -->
+<div class="bearbeiungsbereich" *ngIf="showProductCategoryEditor">
+    <h3>Produktkategorie hinzufügen/bearbeiten </h3>
+    <div class="settings">
+        <input type="text" class="form-control" [(ngModel)]="productCategory.name" placeholder="Produktkategorie">
+        <input type="text" class="form-control" [(ngModel)]="productCategory.productImage" placeholder="Produkticon">
+    </div>
+    <button class="btn btn-default" (click)="cmdFinishProductCategory($event, productCategory)" type="submit">Fertig</button>
+    <button class="btn btn-default" (click)="cmdDeleteProductCategory($event, productCategory)" type="submit">Produktkategorie löschen</button>
+</div>
+<!-- Ende ProductCategory -->
+
+<!-- Start Product -->
+<div class="bearbeiungsbereich" *ngIf="showProductEditor">
+    <h3>Produkt hinzufügen/bearbeiten </h3>
+    <div class="settings">
+        <input type="text" class="form-control" [(ngModel)]="product.name" placeholder="Produkt">
+        <input type="text" class="form-control" [(ngModel)]="product.price" placeholder="Preis">
+        <input type="text" class="form-control" [(ngModel)]="product.comment" placeholder="Kommentar">
+    </div>
+    <button class="btn btn-default" (click)="cmdFinishProduct($event, productCategory, product)" type="submit">Fertig</button>
+    <button class="btn btn-default" (click)="cmdDeleteProduct($event, productCategory, product)" type="submit">Produkt löschen</button>
+</div>
+<!-- Ende Product -->

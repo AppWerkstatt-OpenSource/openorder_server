@@ -1,0 +1,44 @@
+<!-- Start listenbereich-->
+<div class="panel-group listenbereich left" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default" *ngFor="let tableGroup of tableGroups">
+        <div class="panel-heading" role="tab" id="headingOne" (click)="showTableGroup($event, tableGroup)">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    {{tableGroup.name}}
+                    <span *ngIf="tableGroup.name == null">Neue Tischgruppe</span>
+        </a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="list-group list-item-container" *ngFor="let table of tableGroup.tables" (click)="showTable($event, tableGroup, table)">
+                {{table.name}} <img class="icon" src="assets/pencil_icon.png">
+                <span *ngIf="table.name == null">Neuer Tisch</span>
+            </div>
+        </div>
+        <button type="button" (click)="cmdAddTable($event, tableGroup)" class="btn btn-default btn-block">Tisch hinzufügen</button>
+    </div>
+    <button type="button" (click)="cmdAddTableGroup($event)" class="btn btn-default btn-block">Tischgruppe hinzufügen</button>
+</div>
+<!-- Ende listenbereich -->
+
+<!-- Start TableGroupEditior -->
+<div class="bearbeiungsbereich " *ngIf="showTableGroupEditor">
+    <h3>Tischgruppe hinzufügen/bearbeiten </h3>
+    <div class="settings">
+        <input type="text" class="form-control" [(ngModel)]="tableGroup.name" placeholder="Gruppenname">
+    </div>
+    <button class="btn btn-default" (click)="cmdFinishTableGroup($event, tableGroup)" type="submit">Fertig</button>
+    <button class="btn btn-default" (click)="cmdDeleteTableGroup($event, tableGroup)" type="submit">Tischgruppe löschen</button>
+</div>
+<!-- Ende TableGroupEditor -->
+
+<!-- Start TableEditor -->
+<div class="bearbeiungsbereich" *ngIf="showTableEditor">
+    <h3>Tisch hinzufügen/bearbeiten </h3>
+    <div class="settings">
+        <input type="text" class="form-control" [(ngModel)]="table.name" placeholder="Tisch">
+    </div>
+    <button class="btn btn-default" (click)="cmdFinishTable($event, tableGroup, table)" type="submit">Fertig</button>
+    <button class="btn btn-default" (click)="cmdDeleteTable($event, tableGroup, table)" type="submit">Tisch löschen</button>
+</div>
+<!-- Ende TableEditor -->
