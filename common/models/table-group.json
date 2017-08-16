@@ -1,0 +1,25 @@
+{
+  "name": "TableGroup",
+  "plural": "TableGroups",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "tables": {
+      "type": "hasMany",
+      "model": "Table",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
